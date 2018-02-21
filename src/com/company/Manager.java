@@ -88,7 +88,7 @@ public class Manager {
         index--;
         incomplete.set(index, incomplete.get(index).setTitle(input.nextLine()));
         incomplete.set(index, incomplete.get(index).setDueDate(input.nextLine()));
-        incomplete.set(index, incomplete.get(index).setDetails(input.nextLine()));
+        incomplete.set(index, incomplete.get(index));
     }
     protected void viewTaskDetails(int index){
         //view the details of a task
