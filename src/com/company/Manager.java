@@ -86,8 +86,9 @@ public class Manager {
     protected void taskEdit(int index) {
         //edits a task
         index--;
-//      incomplete.set(index,input.nextLine());
-//      incomplete.set(index, " ");
+        incomplete.set(index, incomplete.get(index).setTitle(input.nextLine()));
+        incomplete.set(index, incomplete.get(index).setDueDate(input.nextLine()));
+        incomplete.set(index, incomplete.get(index).setDetails(input.nextLine()));
     }
     protected void viewTaskDetails(int index){
         //view the details of a task
