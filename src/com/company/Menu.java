@@ -18,10 +18,18 @@ public class Menu {
                 "7. Edit a Task.\n" +
                 "8. Select a Task and see the Details.\n" +
                 "9. Exit.");
+
+        /** I recommend using String numerical values '1', to avoid having to use a try/catch or use complex exception handling. */
         try{
             switch(input.nextInt()){
                 case 1:
                     //add
+
+                    /** Rather than instantiating the task here and making it empty (which isn't a real task, is it?), it makes
+                     * more sense to instantiate it in the manager, itself. And to use methods which return strings and dates to instantiate your Task Object.
+                     *
+                     * Task task = new Task(getTaskTitle(), getDueDate(), getTaskDetails());, each of these methods can have a scanner listening for user input,
+                     * then return the proper value. */
                     input.nextLine();
                     Task task = new Task("", "", "");
                     manager.addTask(task);
@@ -63,6 +71,8 @@ public class Menu {
                     input.nextLine();
                     System.out.println("Select a task you would like to edit.");
                     manager.listIncomplete();
+
+                    /** If you're immediately going to convert this into an int, it makes more sense to make it an int in the first place. */
                     String indexString =input.nextLine();
                     int index = Integer.parseInt(indexString);
                     manager.taskEdit(index);
@@ -73,6 +83,8 @@ public class Menu {
                     input.nextLine();
                     System.out.println("Which task would you like to see the details of?");
                     manager.listIncomplete();
+
+                    /** Should be an int to begin with */
                     String indexString2 = input.nextLine();
                     int index2 = Integer.parseInt(indexString2);
                     manager.viewTaskDetails(index2);

@@ -8,6 +8,7 @@ public class Task {
     private String details;
     Scanner input = new Scanner(System.in);
 
+    /** Needs a completed value so you can mark a task completed, isComplete. This would be a boolean. */
     public Task(String title, String dueDate, String details) {
         this.title = title;
         this.dueDate = dueDate;
