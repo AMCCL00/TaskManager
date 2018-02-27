@@ -20,7 +20,12 @@ public class Manager {
     protected void addTask(Task task) {
         //adding a task to lists
         incomplete.add(task);
-        menu.mainMenu();
+        System.out.println("What is the title of your Task.");
+        task.setTitle(input.nextLine());
+        System.out.println("What is the due date of your task.");
+        task.setDueDate(input.nextLine());
+        System.out.println("What are you doing in your task?");
+        task.setDetails(input.nextLine());
 
     }
     protected void removeTask(int index){
@@ -28,7 +33,6 @@ public class Manager {
         index--;
         incomplete.remove(index);
         System.out.println("This task has been successful removed.");
-        menu.mainMenu();
     }
     protected void listAll(){
         //show all lists
@@ -41,7 +45,6 @@ public class Manager {
             Task task = completed.get(x);
             System.out.println((incomplete.size() + x + 1) + ". " + task.getTitle());
         }
-        menu.mainMenu();
     }
     protected void listIncomplete(){
         //show incomplete list
@@ -54,7 +57,6 @@ public class Manager {
                 System.out.println((i + 1) + ". " + task.getTitle());
             }
         }
-        menu.mainMenu();
     }
     protected void listCompleted(){
         //show completed list
@@ -67,7 +69,6 @@ public class Manager {
                 System.out.println((i + 1) + ". " + task.getTitle());
             }
         }
-        menu.mainMenu();
     }
     protected void completeATask(int index){
         //switch a task from incomplete to complete
@@ -80,24 +81,24 @@ public class Manager {
         System.out.println("Your task was completed on " + dateFormat.format(calendar.getTime()));
 
         incomplete.remove(index);
-        menu.mainMenu();
 
     }
     protected void taskEdit(int index) {
         //edits a task
         index--;
-        incomplete.set(index, incomplete.get(index).setTitle(input.nextLine()));
-        incomplete.set(index, incomplete.get(index).setDueDate(input.nextLine()));
-        incomplete.set(index, incomplete.get(index));
+        System.out.println("What would you like to change the Title to?");
+        incomplete.get(index).setTitle(input.nextLine());
+        System.out.println("What would you like to change the due date of this item to? MM/dd/yyyy");
+        incomplete.get(index).setDueDate(input.nextLine());
+        System.out.println("What are the details of your task?");
+        incomplete.get(index).setDetails(input.nextLine());
     }
     protected void viewTaskDetails(int index){
         //view the details of a task
         index--;
-        for(int i = 0; i < incomplete.size(); i++){
-            Task task = incomplete.get(i);
-            System.out.println("The title of this task is " + task.getTitle() + ". The due date of this task is " + dateFormat.format(task.getDueDate()) +
-                    ", and the details are, " + task.getDetails() + ".");
-        }
-
+        Task task = incomplete.get(index);
+        System.out.println("The title of this task is " + task.getTitle() + ". The due date of this task is " + task.getDueDate() +
+                ", and the details are, " + task.getDetails() + ".");
     }
 }
+

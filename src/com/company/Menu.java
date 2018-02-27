@@ -23,9 +23,9 @@ public class Menu {
                 case 1:
                     //add
                     input.nextLine();
-                    System.out.println("What task would you like to add? When is it due? What do you do for this task?");
-                    Task task = new Task(input.nextLine(), input.nextLine(), input.nextLine());
+                    Task task = new Task("", "", "");
                     manager.addTask(task);
+                    mainMenu();
                     break;
                 case 2:
                     //remove
@@ -33,17 +33,22 @@ public class Menu {
                     System.out.println("What task would you like to remove?");
                     manager.listIncomplete();
                     manager.removeTask(input.nextInt());
+                    mainMenu();
                     break;
                 case 3:
                     //List all
                     manager.listAll();
+                    mainMenu();
+
                 case 4:
                     //list incomplete
                     manager.listIncomplete();
+                    mainMenu();
                     break;
                 case 5:
                     //list completed
                     manager.listCompleted();
+                    mainMenu();
                     break;
                 case 6:
                     //mark a task complete
@@ -51,20 +56,27 @@ public class Menu {
                     System.out .println("Which task would you like to complete?");
                     manager.listIncomplete();
                     manager.completeATask(input.nextInt());
+                    mainMenu();
                     break;
                 case 7:
                     //Edit
                     input.nextLine();
                     System.out.println("Select a task you would like to edit.");
                     manager.listIncomplete();
-                    manager.taskEdit(input.nextInt());
+                    String indexString =input.nextLine();
+                    int index = Integer.parseInt(indexString);
+                    manager.taskEdit(index);
+                    mainMenu();
                     break;
                 case 8:
                     //View details
                     input.nextLine();
                     System.out.println("Which task would you like to see the details of?");
                     manager.listIncomplete();
-                    manager.viewTaskDetails(input.nextInt());
+                    String indexString2 = input.nextLine();
+                    int index2 = Integer.parseInt(indexString2);
+                    manager.viewTaskDetails(index2);
+                    mainMenu();
                     break;
                 case 9:
                     //exit
