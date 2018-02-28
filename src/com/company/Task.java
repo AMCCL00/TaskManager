@@ -1,12 +1,9 @@
 package com.company;
 
-import java.util.Scanner;
-
 public class Task {
     private String title;
     private String dueDate;
     private String details;
-    Scanner input = new Scanner(System.in);
 
     public Task(String title, String dueDate, String details) {
         this.title = title;
