@@ -13,6 +13,7 @@ public class Menu {
     SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH/mm/ss");
 
     protected void mainMenu(){
+        //The menu for the program
         System.out.println("What would you like to do?\n" +
                 "1. Add a Task.\n" +
                 "2. Remove a Task.\n" +
@@ -23,79 +24,66 @@ public class Menu {
                 "7. Edit a Task.\n" +
                 "8. Select a Task and see the Details.\n" +
                 "9. Exit.");
-        try{
-            switch(input.nextInt()){
-                case 1:
+        switch(input.nextLine()){
+            case "1":
                     //add
-                    input.nextLine();
                     Task task = new Task("","","");
                     addTask(task);
                     mainMenu();
                     break;
-                case 2:
-                    //remove
-                    input.nextLine();
-                    System.out.println("What task would you like to remove?");
-                    listIncomplete();
-                    removeTask(input.nextInt());
-                    mainMenu();
-                    break;
-                case 3:
-                    //List all
-                    listAll();
-                    mainMenu();
-
-                case 4:
-                    //list incomplete
-                    listIncomplete();
-                    mainMenu();
-                    break;
-                case 5:
-                    //list completed
-                    listCompleted();
-                    mainMenu();
-                    break;
-                case 6:
-                    //mark a task complete
-                    input.nextLine();
-                    System.out .println("Which task would you like to complete?");
-                    listIncomplete();
-                    completeATask(input.nextInt());
-                    mainMenu();
-                    break;
-                case 7:
-                    //Edit
-                    input.nextLine();
-                    System.out.println("Select a task you would like to edit.");
-                    listIncomplete();
-                    taskEdit(input.nextInt());
-                    mainMenu();
-                    break;
-                case 8:
-                    //View details
-                    input.nextLine();
-                    System.out.println("Which task would you like to see the details of?");
-                    listIncomplete();
-                    viewTaskDetails(input.nextInt());
-                    mainMenu();
-                    break;
-                case 9:
-                    //exit
-                    System.exit(12321);
-                    break;
-                default:
-                    input.nextLine();
-                    System.out.println("Please enter one of the given options.");
-                    mainMenu();
+            case "2":
+                //remove
+                System.out.println("What task would you like to remove?");
+                listIncomplete();
+                removeTask(input.nextInt());
+                mainMenu();
+                break;
+            case "3":
+                //List all
+                listAll();
+                mainMenu();
+                break;
+            case "4":
+                //list incomplete
+                listIncomplete();
+                mainMenu();
+                break;
+            case "5":
+                //list completed
+                listCompleted();
+                mainMenu();
+                break;
+            case "6":
+                //mark a task complete
+                System.out .println("Which task would you like to complete?");
+                listIncomplete();
+                completeATask(input.nextInt());
+                mainMenu();
+                break;
+            case "7":
+                //Edit
+                System.out.println("Select a task you would like to edit.");
+                listIncomplete();
+                taskEdit(input.nextInt());
+                mainMenu();
+                break;
+            case "8":
+                //View details
+                System.out.println("Which task would you like to see the details of?");
+                listIncomplete();
+                viewTaskDetails(input.nextInt());
+                mainMenu();
+                break;
+            case "9":
+                //exit
+                System.exit(12321);
+                break;
+            default:
+                input.nextLine();
+                System.out.println("Please enter one of the given options.");
+                mainMenu();
             }
-        }catch (Exception e){
-            input.nextLine();
-            System.out.println("Please enter one of the given options.");
-            mainMenu();
-        }
     }
-
-
 
     private void addTask(Task task) {
         //adding a task to lists
@@ -130,6 +118,7 @@ public class Menu {
         //show incomplete list
         if(incomplete.size() == 0){
             System.out.println("You have no incomplete tasks.\n");
+            mainMenu();
         }else {
             System.out.println("Your incomplete tasks are: ");
             for (int i = 0; i < incomplete.size(); i++) {
